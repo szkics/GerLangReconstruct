@@ -1,7 +1,9 @@
 import io
 import re
 
-german_english_dictionary = dict()
+input_word_list = []
+target_word_list = []
+
 with io.open(
     "../german_english_dictionary/cdfcbfnndm-5219765-7ei959.txt",
     mode="r",
@@ -19,15 +21,20 @@ with io.open(
                     if len(separate_meaning) > 1:
                         actual_meaning = separate_meaning[1]
                 input_word = processed_line[0]
-                german_english_dictionary[input_word] = actual_meaning
+                if (len(actual_meaning.split()) == 1):
+                    input_word_list.append(input_word)
+                    target_word_list.append(actual_meaning)
+
         else:
             processed_line = re.split("\t", line)
             input_word = processed_line[0]
             if len(processed_line) > 1:
                 actual_meaning = processed_line[1]
-                german_english_dictionary[input_word] = actual_meaning
+                if (len(actual_meaning.split()) == 1):
+                    input_word_list.append(input_word)
+                    target_word_list.append(actual_meaning)
 f.close()
 
-with open("german_english_dictionary.txt", "w") as f:
-    print(german_english_dictionary, file=f)
-f.close()
+with open("./german_english_dictionary.csv", "a") as f:
+    for i in range(0,len(input_word_list)):
+        f.write(input_word_list[i] + "," + target_word_list[i] + "\n")
