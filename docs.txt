@@ -1,0 +1,3 @@
+https://cris.vub.be/ws/portalfiles/portal/51069299/MSc_thesis_Peter_Dekker_Reconstructing_language_ancestry_by_performing_word_prediction_with_neural_networks.pdf
+https://en.wikipedia.org/wiki/Linguistic_reconstruction
+https://github.com/lingpy/lingrex
